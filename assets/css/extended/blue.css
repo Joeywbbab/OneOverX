@@ -1,0 +1,103 @@
+/* ===== OneOverX — 蓝色主色覆盖 =====
+   PaperMod 会自动加载 assets/css/extended/ 下的 css。
+   通过覆盖 CSS 变量把强调色改成蓝色,无需改主题源码。
+*/
+
+:root {
+  --blue: #2563eb;          /* 主蓝 */
+  --blue-dark: #1d4ed8;
+  --blue-soft: #eff4ff;
+}
+
+/* 浅色主题 */
+.light {
+  --primary: #1b2430;                 /* 主文字:深蓝黑 */
+  --secondary: #4a5568;
+  --tertiary: #e6ecf5;
+  --content: #2a3543;
+  --code-bg: #f3f6fb;
+  --border: #dbe4f0;
+  --theme: #fbfcfe;                   /* 页面底:极浅蓝白 */
+  --entry: #ffffff;
+}
+
+/* 深色主题(切换时) */
+.dark {
+  --primary: #e8eef7;
+  --secondary: #aab6c6;
+  --tertiary: #1f2733;
+  --content: #ccd6e4;
+  --code-bg: #161c25;
+  --border: #2a3543;
+  --theme: #10151c;
+  --entry: #161c25;
+}
+
+/* 链接、强调用蓝色 */
+a { color: var(--blue); }
+.dark a { color: #6ea0ff; }
+
+/* 文章标题 hover、首页大标题里的强调 */
+.post-title { color: var(--primary); }
+.first-entry .entry-header h1 { color: var(--primary); }
+
+/* logo / 站名 */
+.logo a { font-weight: 700; }
+
+/* 让首页 homeInfo 标题中的句号也呼应蓝色,可选 */
+.home-info .entry-header h1,
+.home_info h1 { color: var(--primary); }
+
+/* "阅读更多" 等按钮 */
+.entry-footer, a.entry-link { color: var(--blue); }
+
+/* 代码块顶部条 */
+.post-content pre { border: 1px solid var(--border); }
+
+/* 站名 One(黑) Over(蓝) X(黑) */
+.brand-name { font-weight: 700; letter-spacing: -0.01em; }
+.b-one, .b-x { color: var(--primary); }
+.b-over { color: var(--blue); }
+.dark .b-one, .dark .b-x { color: var(--primary); }
+
+/* logo 图片和文字间距 */
+.logo a img { margin-right: 6px; vertical-align: middle; }
+
+/* 统一背景色：list 页面（columns/archive）与 about 保持一致 */
+.list { background: var(--theme); }
+
+/* Columns filter */
+.col-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: calc(var(--gap) * 1.5);
+}
+.col-btn {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.col-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.col-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+.dark .col-btn.active { color: #fff; }
+
+/* home-info 间距收紧 */
+.first-entry.home-info {
+  min-height: unset;
+  margin-bottom: var(--gap);
+}
+.home-info .entry-footer { margin-top: 4px; }

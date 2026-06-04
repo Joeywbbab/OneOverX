@@ -1,0 +1,58 @@
+{{- define "main" }}
+
+<header class="page-header">
+    <h1>{{ if eq .Lang "zh" }}栏目{{ else }}Columns{{ end }}</h1>
+</header>
+
+<div class="col-filters">
+    <button class="col-btn active" data-filter="all">{{ if eq .Lang "zh" }}全部{{ else }}All{{ end }}</button>
+    <button class="col-btn" data-filter="Beta Project">Beta Project</button>
+    <button class="col-btn" data-filter="X Factor">X Factor</button>
+    <button class="col-btn" data-filter="Y Stories">Y Stories</button>
+</div>
+
+<div class="col-posts">
+{{- $type := .Type }}
+{{- range $key, $value := .Data.Terms.Alphabetical }}
+    {{- $tagName := .Name }}
+    {{- $tagTitle := .Name }}
+    {{- with site.GetPage (printf "/%s/%s" $type $tagName) }}
+        {{- $title := .LinkTitle }}
+        {{- range .Pages.ByDate.Reverse }}
+        <article class="post-entry col-post" data-tag="{{ $title }}">
+            <header class="entry-header">
+                <h2 class="entry-hint-parent">{{ .Title }}</h2>
+            </header>
+            {{- if (ne (.Param "hideSummary") true) }}
+            <div class="entry-content">
+                <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+            </div>
+            {{- end }}
+            <footer class="entry-footer">
+                {{- partial "post_meta.html" . -}}
+            </footer>
+            <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+        </article>
+        {{- end }}
+    {{- end }}
+{{- end }}
+</div>
+
+<script>
+(function () {
+    var btns = document.querySelectorAll('.col-btn');
+    var posts = document.querySelectorAll('.col-post');
+    btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            btns.forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var filter = btn.dataset.filter;
+            posts.forEach(function (p) {
+                p.style.display = (filter === 'all' || p.dataset.tag === filter) ? '' : 'none';
+            });
+        });
+    });
+})();
+</script>
+
+{{- end }}

@@ -1,0 +1,125 @@
+baseURL: "https://oneoverx.joeyconnects.world/"
+title: "OneOverX"
+theme: "PaperMod"
+
+defaultContentLanguage: "zh"
+defaultContentLanguageInSubdir: true
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+pygmentsUseClasses: true
+
+# ----- 双语 -----
+languages:
+  zh:
+    locale: "zh-CN"
+    label: "中文"
+    weight: 1
+    title: "OneOverX"
+    contentDir: content/zh
+    params:
+      homeInfoParams:
+        Title: "Welcome to OneOverX"
+        Content: "A bilingual weekly. Stay Beta. Explore the Independent One."
+      socialIcons:
+        - name: x
+          url: "https://x.com/"
+        - name: substack
+          url: "https://substack.com/"
+        - name: rss
+          url: "/zh/index.xml"
+        - name: email
+          url: "mailto:joeybab5207@gmail.com"
+    menu:
+      main:
+        - identifier: m-tags
+          name: 栏目
+          pageRef: /tags
+          weight: 10
+        - identifier: m-archive
+          name: 归档
+          pageRef: /archives
+          weight: 20
+        - identifier: m-about
+          name: 关于
+          pageRef: /about
+          weight: 30
+  en:
+    locale: "en-US"
+    label: "English"
+    weight: 2
+    title: "OneOverX"
+    contentDir: content/en
+    params:
+      homeInfoParams:
+        Title: "Welcome to OneOverX"
+        Content: "A bilingual weekly. Stay Beta. Explore the Independent One."
+      socialIcons:
+        - name: x
+          url: "https://x.com/"
+        - name: substack
+          url: "https://substack.com/"
+        - name: rss
+          url: "/en/index.xml"
+        - name: email
+          url: "mailto:joeybab5207@gmail.com"
+    menu:
+      main:
+        - identifier: m-tags
+          name: Columns
+          pageRef: /tags
+          weight: 10
+        - identifier: m-archive
+          name: Archive
+          pageRef: /archives
+          weight: 20
+        - identifier: m-about
+          name: About
+          pageRef: /about
+          weight: 30
+
+# ----- PaperMod 参数 -----
+params:
+  env: production
+  description: "OneOverX — staying non-zero. y = 1/x"
+  author: "Joey"
+
+  label:
+    text: ""
+    icon: /oneoverx-mark.png
+    iconHeight: 30
+
+  defaultTheme: light
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowToc: false
+  hidemeta: false
+  comments: false
+
+  mainSections:
+    - posts
+
+  assets:
+    favicon: "/favicon.png"
+    disableHLJS: false
+
+taxonomies:
+  tag: tags
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
