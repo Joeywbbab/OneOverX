@@ -55,6 +55,20 @@ Let me be clear: I'm not selling a path. There are no holy books here — I'll l
 
 **First you have to understand what work is. Only then can you figure out how to build the life you want.**
 
+The strange thing is that we treat work as obvious — *of course* you work — when humans have argued about what it's actually for for thousands of years, and never agreed.
+
+Aristotle thought manual labor was beneath the good life — necessary for survival, but not the point of it. We work, he said, in order to have leisure; happiness lives in the leisure, not the work. Almost the exact inverse of how we live now.
+
+Hegel flipped it: work is how you put yourself into the world and recognize yourself in what you've made. It's why building something feels deeper than consuming it — in work, a person becomes what they are.
+
+Marx showed what happens when that breaks. Wage labor alienates you from what you make, from the making, and from yourself — which is why so many of us feel hollow while being relentlessly "productive."
+
+Weber explained the guilt. Protestant theology recast work as a calling, a moral duty — and we inherited the hustle, and the quiet shame of resting on a Sunday.
+
+The contemporary version is more practical: meaningful work develops your capabilities, helps others, and reflects your values. But it isn't found lying around — it's built, and the real challenge is building work that serves you, not just the other way around.
+
+Nobody handed down the answer. Which means the next part is mine, not theirs.
+
 By law, most of us will work something like forty years. So what is the essence of work? More precisely: what does work mean to you? Work is downstream of your lifestyle. Every decision about work is really a decision about how you want to live.
 
 I can already hear the objection: if I can't even feed myself, why am I philosophizing about my lifestyle? That's a middle-class problem. Fair. So let me use myself as the example.
