@@ -1,7 +1,8 @@
 ---
 title: "第一期:为什么是 1/x"
 date: "2026-06-01"
-tags: ["Y Stories"]
+tags: ["X Factor"]
+issue: 1
 summary: "关于这份周刊的名字,以及保持非零意味着什么。"
 ---
 

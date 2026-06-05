@@ -19,19 +19,6 @@ languages:
     weight: 2
     title: "OneOverX"
     contentDir: content/zh
-    params:
-      homeInfoParams:
-        Title: "Welcome to OneOverX"
-        Content: "A bilingual weekly. Stay Beta. Explore the Independent One."
-      socialIcons:
-        - name: x
-          url: "https://x.com/"
-        - name: substack
-          url: "https://substack.com/"
-        - name: rss
-          url: "/zh/index.xml"
-        - name: email
-          url: "mailto:joeybab5207@gmail.com"
     menu:
       main:
         - identifier: m-tags
@@ -52,19 +39,6 @@ languages:
     weight: 1
     title: "OneOverX"
     contentDir: content/en
-    params:
-      homeInfoParams:
-        Title: "Welcome to OneOverX"
-        Content: "A bilingual weekly. Stay Beta. Explore the Independent One."
-      socialIcons:
-        - name: x
-          url: "https://x.com/"
-        - name: substack
-          url: "https://substack.com/"
-        - name: rss
-          url: "/en/index.xml"
-        - name: email
-          url: "mailto:joeybab5207@gmail.com"
     menu:
       main:
         - identifier: m-tags
@@ -101,6 +75,16 @@ params:
   ShowToc: false
   hidemeta: false
   comments: false
+
+  socialIcons:
+    - name: x
+      url: "https://x.com/"
+    - name: substack
+      url: "https://substack.com/"
+    - name: rss
+      url: "/en/index.xml"
+    - name: email
+      url: "mailto:joeybab5207@gmail.com"
 
   mainSections:
     - posts

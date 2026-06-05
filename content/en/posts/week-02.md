@@ -2,6 +2,7 @@
 title: "Regression to the Mean, Not to Failure"
 date: "2026-06-08"
 tags: ["X Factor"]
+issue: 1
 summary: "One bad run doesn't destroy your confidence — unless you misread the statistics."
 ---
 
