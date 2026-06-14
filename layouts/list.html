@@ -40,56 +40,106 @@
     {{- $issueDate := "" }}
     {{- range $issuePosts }}{{- if eq $issueDate "" }}{{- $issueDate = .Date.Format "January 2, 2006" }}{{- end }}{{- end }}
 
-    <div class="newspaper-masthead">
-      <div class="newspaper-issue-line">
-        <span class="newspaper-issue-num">Issue {{ $latestIssue }}</span>
-        <span class="newspaper-rule"></span>
-        <span class="newspaper-date">{{ $issueDate }}</span>
+    {{/* Column definitions: tag -> display label */}}
+    {{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" }}
+
+    {{/* Build ordered list of posts that exist for this issue, in column order */}}
+    {{- $issueArticles := slice }}
+    {{- range $columns }}
+      {{- $col := . }}
+      {{- range $issuePosts }}
+        {{- if in .Params.tags $col }}
+          {{- $issueArticles = $issueArticles | append (dict "col" $col "page" .) }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+
+    {{- $total := len $issueArticles }}
+
+    {{/* ===== Masthead ===== */}}
+    <div class="np-masthead">
+      <div class="np-masthead-top">
+        <span class="np-vol">{{ if eq .Lang "zh" }}第一卷 · 第 {{ printf "%03d" $latestIssue }} 期{{ else }}VOL. I · NO. {{ printf "%03d" $latestIssue }}{{ end }}</span>
+        <span class="np-date">{{ $issueDate }} · {{ if eq .Lang "zh" }}旬刊{{ else }}EVERY 10 DAYS{{ end }}</span>
+      </div>
+      <div class="np-masthead-brand">
+        <h1 class="np-brand-name"><span class="b-one">One</span><span class="b-over">Over</span><span class="b-x">X</span></h1>
+        <p class="np-slogan">{{ if eq .Lang "zh" }}<em>培养你自己的视角</em>{{ else }}<em>Develop Your Lens</em>{{ end }}</p>
+      </div>
+      <div class="np-masthead-bottom">
+        <span class="np-url">oneoverx.joeyconnects.world</span>
+        <span class="np-bilingual">{{ if eq .Lang "zh" }}双语 · 中/英{{ else }}BILINGUAL · EN/ZH{{ end }}</span>
+        <span class="np-channels">SUBSTACK + X + YOUTUBE</span>
       </div>
     </div>
 
-    {{/* Group by tag/column */}}
-    {{- $columns := slice "Beta Project" "X Factor" "Y Stories" }}
-    {{- $hasAny := false }}
-    {{- range $columns }}
-      {{- $col := . }}
-      {{- $colPosts := slice }}
-      {{- range $issuePosts }}
-        {{- if in .Params.tags $col }}
-          {{- $colPosts = $colPosts | append . }}
-        {{- end }}
-      {{- end }}
-      {{- if $colPosts }}{{- $hasAny = true }}{{- end }}
-    {{- end }}
+    {{- if gt $total 0 }}
+    {{- $lead := index $issueArticles 0 }}
 
-    {{- if $hasAny }}
-    <div class="newspaper-grid">
-      {{- range $columns }}
-        {{- $col := . }}
-        {{- $colPosts := slice }}
-        {{- range $issuePosts }}
-          {{- if in .Params.tags $col }}
-            {{- $colPosts = $colPosts | append . }}
-          {{- end }}
-        {{- end }}
-        {{- if $colPosts }}
-        <section class="newspaper-col">
-          <h2 class="newspaper-col-header">{{ $col }}</h2>
-          {{- range $colPosts }}
-          <article class="newspaper-card">
-            <h3 class="newspaper-card-title">
-              <a href="{{ .Permalink }}">{{ .Title }}</a>
-            </h3>
-            {{- if .Summary }}
-            <p class="newspaper-card-summary">{{ .Summary | plainify | truncate 120 }}</p>
+    {{/* Cover images available for specific columns this issue */}}
+    {{- $colCovers := dict "X-AI" "/images/week-01-ai/week-01-ai-cover.png" "X-Money" "/images/week-01-money-cover.jpg" }}
+
+    {{/* ===== Cover + TOC ===== */}}
+    <div class="np-cover-page">
+      <div class="np-cover-img">
+        <img src="/images/issue-01-cover.png" alt="{{ if eq .Lang "zh" }}本期封面{{ else }}Issue cover{{ end }}">
+      </div>
+
+      <div class="np-cover-side">
+        {{/* ===== This issue + audio ===== */}}
+        <div class="np-cover-toc">
+          <h3 class="np-sidebar-header">{{ if eq .Lang "zh" }}本期目录{{ else }}THIS ISSUE{{ end }}</h3>
+          <ul class="np-toc np-cover-toc-list">
+            {{- range $i, $a := $issueArticles }}
+            {{- $title := $a.page.Params.tocTitle | default $a.page.Title }}
+            <li>
+              <a href="{{ $a.page.Permalink }}">
+                <span class="np-toc-title">{{ replace $a.col "X-" "" }} — {{ $title }}</span>
+                <span class="np-toc-page">{{ printf "%c%d" (add 65 $i) 1 }}</span>
+              </a>
+            </li>
             {{- end }}
-            <p class="newspaper-card-meta">{{ .Date.Format "Jan 2" }} · {{ .ReadingTime }} min</p>
-          </article>
-          {{- end }}
-        </section>
-        {{- end }}
+          </ul>
+
+          <div class="np-sidebar-block">
+            <span class="np-sidebar-tag">{{ if eq .Lang "zh" }}音频版{{ else }}AUDIO EDITION{{ end }}</span>
+            <p class="np-sidebar-text">
+              {{- if eq .Lang "zh" -}}
+              本期配有完整音频版，可在 YouTube 收听。
+              {{- else -}}
+              This issue ships with a full audio version on YouTube.
+              {{- end -}}
+            </p>
+            <a class="np-sidebar-link" href="https://www.youtube.com/@1OverX-beta" target="_blank" rel="noopener">youtube.com/@1OverX-beta ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/* ===== Featured grid (large cover cards) ===== */}}
+    <div class="np-bento-section-header">
+      <h3 class="np-sidebar-header">{{ if eq .Lang "zh" }}推荐阅读{{ else }}RECOMMENDED READING{{ end }}</h3>
+    </div>
+    <div class="np-bento-featured">
+      {{- range $i, $a := $issueArticles }}
+      {{- $cover := index $colCovers $a.col }}
+      {{- if $cover }}
+      {{- $title := $a.page.Params.tocTitle | default $a.page.Title }}
+      <a class="np-bento-card np-bento-card--lg" href="{{ $a.page.Permalink }}">
+        <div class="np-bento-card-img">
+          <img src="{{ $cover }}" alt="{{ $title }}" loading="lazy">
+        </div>
+        <div class="np-bento-card-body">
+          <span class="np-bento-card-tag">{{ replace $a.col "X-" "" }} · {{ printf "%c%d" (add 65 $i) 1 }}</span>
+          <h3 class="np-bento-card-title">{{ $title }}</h3>
+          {{- if $a.page.Summary }}<p class="np-bento-card-summary">{{ $a.page.Summary | plainify | truncate 90 }}</p>{{- end }}
+        </div>
+      </a>
+      {{- end }}
       {{- end }}
     </div>
+
+    <a class="np-enter-issue" href="{{ $lead.page.Permalink }}">{{ if eq .Lang "zh" }}进入本期 →{{ else }}Enter this issue →{{ end }}</a>
     {{- end }}
 
   {{- else }}

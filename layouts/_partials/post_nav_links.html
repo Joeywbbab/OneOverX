@@ -1,0 +1,75 @@
+{{- /* Order posts by issue, then by column sequence (X-AI ... X-Terms),
+   so prev/next follows the reading order of each printed issue rather
+   than raw publish date. */}}
+{{- $current := . }}
+{{- $allPages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $allPages = where $allPages "Params.hiddenInHomeList" "!=" "true" }}
+{{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" }}
+
+{{/* Collect distinct issue numbers, ascending */}}
+{{- $issues := slice }}
+{{- range $allPages }}
+  {{- $n := .Params.issue | default 0 }}
+  {{- if not (in $issues $n) }}{{- $issues = $issues | append $n }}{{- end }}
+{{- end }}
+{{- $issues = sort $issues }}
+
+{{- $ordered := slice }}
+{{- range $issues }}
+  {{- $issuePosts := where $allPages "Params.issue" . }}
+  {{- range $columns }}
+    {{- $col := . }}
+    {{- range $issuePosts }}
+      {{- if in .Params.tags $col }}
+        {{- $ordered = $ordered | append . }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- $pos := -1 }}
+{{- range $i, $p := $ordered }}
+  {{- if eq $p $current }}{{- $pos = $i }}{{- end }}
+{{- end }}
+
+{{- if ge $pos 0 }}
+<nav class="paginav np-paginav">
+  {{- if gt $pos 0 }}
+  {{- $prev := index $ordered (sub $pos 1) }}
+  {{- $prevCol := "" }}
+  {{- range $columns }}{{- if in $prev.Params.tags . }}{{- $prevCol = . }}{{- end }}{{- end }}
+  <a class="prev" href="{{ $prev.Permalink }}">
+    <span class="title">« {{ i18n "prev_page" }}</span>
+    {{- if $prevCol }}<span class="np-paginav-col">{{ replace $prevCol "X-" "" }}</span>{{- end }}
+    <span class="np-paginav-title">{{- $prev.Title -}}</span>
+  </a>
+  {{- end }}
+  {{- if lt $pos (sub (len $ordered) 1) }}
+  {{- $next := index $ordered (add $pos 1) }}
+  {{- $nextCol := "" }}
+  {{- range $columns }}{{- if in $next.Params.tags . }}{{- $nextCol = . }}{{- end }}{{- end }}
+  <a class="next" href="{{ $next.Permalink }}">
+    <span class="title">{{ i18n "next_page" }} »</span>
+    {{- if $nextCol }}<span class="np-paginav-col">{{ replace $nextCol "X-" "" }}</span>{{- end }}
+    <span class="np-paginav-title">{{- $next.Title -}}</span>
+  </a>
+  {{- end }}
+</nav>
+{{- if gt $pos 0 }}{{- $prev := index $ordered (sub $pos 1) }}
+<a class="np-paginav-key np-paginav-key-prev" href="{{ $prev.Permalink }}" aria-hidden="true" tabindex="-1"></a>
+{{- end }}
+{{- if lt $pos (sub (len $ordered) 1) }}{{- $next := index $ordered (add $pos 1) }}
+<a class="np-paginav-key np-paginav-key-next" href="{{ $next.Permalink }}" aria-hidden="true" tabindex="-1"></a>
+{{- end }}
+<script>
+(function () {
+  var prevLink = document.querySelector('.np-paginav-key-prev');
+  var nextLink = document.querySelector('.np-paginav-key-next');
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /input|textarea/i.test(e.target.tagName)) return;
+    if (e.key === 'ArrowLeft' && prevLink) window.location.href = prevLink.href;
+    if (e.key === 'ArrowRight' && nextLink) window.location.href = nextLink.href;
+  });
+})();
+</script>
+{{- end }}

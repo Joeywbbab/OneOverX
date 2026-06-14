@@ -1,0 +1,10 @@
+{{- $img := .Get "img" }}
+{{- $alt := .Get "alt" | default "" }}
+<div class="np-media-item">
+  <div class="np-media-item-img">
+    <img src="{{ $img }}" alt="{{ $alt }}" loading="lazy">
+  </div>
+  <div class="np-media-item-body">
+    {{- .Inner | $.Page.RenderString }}
+  </div>
+</div>
