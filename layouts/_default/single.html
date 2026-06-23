@@ -1,6 +1,7 @@
 {{- define "main" }}
 
-{{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" }}
+{{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" "X-Share" }}
+{{- $colLabels := dict "X-AI" "AI" "X-Mindset" "Mindset" "X-Money" "Money" "X-Art" "Art" "X-Book" "Book" "X-Movie" "Movie" "X-Terms" "Terms" "X-Share" "Share" }}
 {{- $issue := .Params.issue | default 0 }}
 {{- $issueArticles := slice }}
 {{- if gt $issue 0 }}
@@ -66,7 +67,7 @@
       {{- $title := .page.Params.tocTitle | default .page.Title }}
       <li>
         <a href="{{ .page.Permalink }}" {{ if eq .page $ }}class="np-toc-current"{{ end }}>
-          <span class="np-toc-title">{{ replace .col "X-" "" }} — {{ $title }}</span>
+          <span class="np-toc-title">{{ index $colLabels .col | default (replace .col "X-" "") }} — {{ $title }}</span>
         </a>
       </li>
       {{- end }}
@@ -107,7 +108,7 @@
       {{- $title := $a.page.Params.tocTitle | default $a.page.Title }}
       <li>
         <a href="{{ $a.page.Permalink }}" {{ if eq $a.page $ }}class="np-toc-current"{{ end }}>
-          <span class="np-toc-title">{{ replace $a.col "X-" "" }} — {{ $title }}</span>
+          <span class="np-toc-title">{{ index $colLabels $a.col | default (replace $a.col "X-" "") }} — {{ $title }}</span>
           <span class="np-toc-page">{{ printf "%c%d" (add 65 $i) 1 }}</span>
         </a>
       </li>

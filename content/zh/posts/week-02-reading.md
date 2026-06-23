@@ -2,7 +2,7 @@
 title: "分享 — 如何做研究 & 如何培养审美"
 tocTitle: "如何做研究 & 如何培养审美"
 date: "2026-06-23"
-tags: ["X-Reading"]
+tags: ["X-Share"]
 issue: 2
 summary: "两篇值得读的文章：如何做好研究，以及如何培养审美。"
 ---

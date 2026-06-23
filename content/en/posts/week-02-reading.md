@@ -2,7 +2,7 @@
 title: "Share — How to Do Research & How to Have Taste"
 tocTitle: "How to Do Research & How to Have Taste"
 date: "2026-06-23"
-tags: ["X-Reading"]
+tags: ["X-Share"]
 issue: 2
 summary: "Two articles worth reading: how to be good at research, and how to develop taste."
 ---

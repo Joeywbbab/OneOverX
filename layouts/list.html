@@ -41,8 +41,8 @@
     {{- range $issuePosts }}{{- if eq $issueDate "" }}{{- $issueDate = .Date.Format "January 2, 2006" }}{{- end }}{{- end }}
 
     {{/* Column definitions: tag -> display label */}}
-    {{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" "X-Reading" }}
-    {{- $colLabels := dict "X-AI" "AI" "X-Mindset" "Mindset" "X-Money" "Money" "X-Art" "Art" "X-Book" "Book" "X-Movie" "Movie" "X-Terms" "Terms" "X-Reading" "Share" }}
+    {{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" "X-Share" }}
+    {{- $colLabels := dict "X-AI" "AI" "X-Mindset" "Mindset" "X-Money" "Money" "X-Art" "Art" "X-Book" "Book" "X-Movie" "Movie" "X-Terms" "Terms" "X-Share" "Share" }}
 
     {{/* Build ordered list of posts that exist for this issue, in column order */}}
     {{- $issueArticles := slice }}
@@ -65,7 +65,7 @@
       </div>
       <div class="np-masthead-brand">
         <h1 class="np-brand-name"><span class="b-one">One</span><span class="b-over">Over</span><span class="b-x">X</span></h1>
-        <p class="np-slogan">{{ if eq .Lang "zh" }}<em>培养你自己的视角</em>{{ else }}<em>Develop Your Lens</em>{{ end }}</p>
+        <p class="np-slogan">{{ if eq .Lang "zh" }}<em>培养你自己的视角</em>{{ else }}<em>Develop Our Lens</em>{{ end }}</p>
       </div>
       <div class="np-masthead-bottom">
         <span class="np-url">oneoverx.joeyconnects.world</span>
