@@ -492,10 +492,15 @@ footer {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px;
 }
+.np-cover-img {
+  align-self: start;
+}
 .np-cover-img img {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 520px;
+  object-fit: cover;
 }
 .np-cover-side {
   display: flex;
@@ -546,14 +551,19 @@ footer {
   color: var(--ox-blue);
 }
 
-/* Large cards (AI / Money): image + headline */
+/* Large cards (AI / Mindset): image + headline */
 .np-bento-card--lg {
   flex-direction: column;
+}
+.np-bento-card--lg .np-bento-card-img {
+  height: 260px;
+  overflow: hidden;
 }
 .np-bento-card--lg .np-bento-card-img img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border-bottom: 0.5px solid var(--border);
 }
 .np-bento-card--lg .np-bento-card-body {

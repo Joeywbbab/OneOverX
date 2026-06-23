@@ -41,7 +41,8 @@
     {{- range $issuePosts }}{{- if eq $issueDate "" }}{{- $issueDate = .Date.Format "January 2, 2006" }}{{- end }}{{- end }}
 
     {{/* Column definitions: tag -> display label */}}
-    {{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" }}
+    {{- $columns := slice "X-AI" "X-Mindset" "X-Money" "X-Art" "X-Book" "X-Movie" "X-Terms" "X-Reading" }}
+    {{- $colLabels := dict "X-AI" "AI" "X-Mindset" "Mindset" "X-Money" "Money" "X-Art" "Art" "X-Book" "Book" "X-Movie" "Movie" "X-Terms" "Terms" "X-Reading" "Share" }}
 
     {{/* Build ordered list of posts that exist for this issue, in column order */}}
     {{- $issueArticles := slice }}
@@ -77,12 +78,12 @@
     {{- $lead := index $issueArticles 0 }}
 
     {{/* Cover images available for specific columns this issue */}}
-    {{- $colCovers := dict "X-AI" "/images/week-01-ai/week-01-ai-cover.png" "X-Money" "/images/week-01-money-cover.jpg" }}
+    {{- $colCovers := dict "X-AI" "/images/week-02-ai-cover.png" "X-Mindset" "/images/week-02-mindset-cover.png" }}
 
     {{/* ===== Cover + TOC ===== */}}
     <div class="np-cover-page">
       <div class="np-cover-img">
-        <img src="/images/issue-01-cover.png" alt="{{ if eq .Lang "zh" }}本期封面{{ else }}Issue cover{{ end }}">
+        <img src="/images/issue-{{ printf "%02d" $latestIssue }}-cover.{{ if eq $latestIssue 1 }}png{{ else }}jpeg{{ end }}" alt="{{ if eq .Lang "zh" }}本期封面{{ else }}Issue cover{{ end }}">
       </div>
 
       <div class="np-cover-side">
@@ -94,7 +95,7 @@
             {{- $title := $a.page.Params.tocTitle | default $a.page.Title }}
             <li>
               <a href="{{ $a.page.Permalink }}">
-                <span class="np-toc-title">{{ replace $a.col "X-" "" }} — {{ $title }}</span>
+                <span class="np-toc-title">{{ index $colLabels $a.col | default (replace $a.col "X-" "") }} — {{ $title }}</span>
                 <span class="np-toc-page">{{ printf "%c%d" (add 65 $i) 1 }}</span>
               </a>
             </li>
@@ -130,7 +131,7 @@
           <img src="{{ $cover }}" alt="{{ $title }}" loading="lazy">
         </div>
         <div class="np-bento-card-body">
-          <span class="np-bento-card-tag">{{ replace $a.col "X-" "" }} · {{ printf "%c%d" (add 65 $i) 1 }}</span>
+          <span class="np-bento-card-tag">{{ index $colLabels $a.col | default (replace $a.col "X-" "") }} · {{ printf "%c%d" (add 65 $i) 1 }}</span>
           <h3 class="np-bento-card-title">{{ $title }}</h3>
           {{- if $a.page.Summary }}<p class="np-bento-card-summary">{{ $a.page.Summary | plainify | truncate 90 }}</p>{{- end }}
         </div>
