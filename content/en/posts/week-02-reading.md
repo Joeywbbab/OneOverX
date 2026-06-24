@@ -9,7 +9,7 @@ summary: "Two articles worth reading: how to be good at research, and how to dev
 
 ## How to Be Good at Research
 
-![How to be good at research](/images/week-02-reading-research.png)
+![How to be good at research](/images/week-02-share-research.png)
 
 Link: [https://x.com/itsreallyvivek/status/2064686372737454155](https://x.com/itsreallyvivek/status/2064686372737454155)
 

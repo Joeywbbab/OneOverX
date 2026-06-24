@@ -9,7 +9,7 @@ summary: "两篇值得读的文章：如何做好研究，以及如何培养审�
 
 ## 如何做好研究
 
-![How to be good at research](/images/week-02-reading-research.png)
+![How to be good at research](/images/week-02-share-research.png)
 
 链接：[https://x.com/itsreallyvivek/status/2064686372737454155](https://x.com/itsreallyvivek/status/2064686372737454155)
 
