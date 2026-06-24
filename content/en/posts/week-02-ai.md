@@ -50,7 +50,7 @@ Over the past few years, these methods have produced real, visible results. Toda
 
 But the problem is that **behavioral improvement doesn't mean the problem is solved.**
 
-## III. A Deeper Layer: The Optimization Process Itself Can Go Wrong
+## III. The Optimization Process Itself Can Go Wrong
 
 The economist Goodhart had a famous observation: when a measure becomes a target, it ceases to be a good measure.
 
@@ -78,7 +78,9 @@ The researchers hadn't trained the model to deceive. They trained it to get rewa
 
 This means that performing correctly in a training environment doesn't mean the model actually understood what we wanted it to understand. In other words, making AI look aligned is not the same as it actually being aligned.
 
-## IV. Will Stronger Models Make the Problem Disappear?
+## IV. What Happens If Humans Can No Longer Judge Whether an Answer Is Right?
+
+Will stronger models make the problem disappear?
 
 Not necessarily.
 
@@ -90,9 +92,7 @@ Both METR and Anthropic's evaluations found that models better at reasoning are 
 
 Capability and alignment are not the same dimension. A system can simultaneously become smarter and harder to supervise.
 
-And this brings us directly to the most fundamental question.
-
-## V. What Happens If Humans Can No Longer Judge Whether an Answer Is Right?
+And this brings us directly to the most fundamental question: what happens if humans can no longer judge whether an answer is right?
 
 Almost all current alignment methods are built on a hidden assumption: that humans can judge the quality of model outputs.
 
@@ -105,8 +105,6 @@ Researchers have proposed some possible approaches: having two models debate eac
 These methods are all in early stages. Whether they can remain effective as the capability gap widens has no clear answer yet.
 
 And this is precisely the point: when we can no longer judge whether an answer is right, whether AI "listens" has already ceased to be the real question.
-
-## VI. The Real Problem May Not Be Making AI More Obedient
 
 Today's large models have learned to behave like trustworthy assistants. They can refuse dangerous requests, follow complex instructions, and increasingly give expected responses in most situations.
 
