@@ -32,7 +32,7 @@ The real problem has never been failure. It's: **reaching a place that's already
 
 ## II. A Single Decision: The Courage to Descend, and What It Costs
 
-Zoom all the way in: a person standing at a peak, facing a choice that looks worse than staying put. This is simultaneously the smallest and hardest question of all. Two intellectual frameworks converge here — one from algorithmic intuition, one from decision science.
+Zoom all the way in: a person standing at a peak, facing a choice that looks worse than staying put.
 
 ### Simulated Annealing: The Misunderstood Art of Deliberate Choice
 
@@ -92,19 +92,11 @@ Bring the lens back to yourself. If you stretch the time scale long enough, mayb
 
 Many phases that look like failure are in fact necessary turbulence within the annealing process. Those anxiety-inducing moments — taking a pay cut to change careers, leaving a familiar environment, giving up an identity you've built, starting from zero in something new — they look like losses. But from a systems perspective, they may simply be the cost of gaining greater degrees of freedom.
 
----
-
-## VI. The Hard Part Isn't the Algorithm — It's the Emotion
-
 The core logic of simulated annealing is extremely simple. You can write it in a few lines of code. But lived in a human body, the hardest part has never been the calculation — it's the emotion.
 
 The human brain is wired to hate uncertainty. So when we're about to deliberately walk downhill, the amygdala fires its alarms — anxiety, reluctance, the ache of what we might lose. So we'd rather slowly age out at our local optimum than endure the temporary chaos of something unfamiliar.
 
 This is why knowing is easy and doing is hard. Because what blocks us has never been logic — it's fear.
-
----
-
-## VII. Trading Time for Space
 
 So perhaps the real art of growth isn't always moving forward — it's knowing when to keep climbing, when to stop optimizing, and when to deliberately descend.
 
